@@ -1,0 +1,14 @@
+<div>
+    <span class="key">{{key}} :</span>
+    <mat-chip *ngIf="valType == 'string'" color="accent">
+        {{val}}
+    </mat-chip>
+
+    <span *ngIf="valType == 'object'">
+        <mat-chip *ngFor="let v of val" color="accent" style="margin: 0px 5px;">
+            {{v}}
+            <mat-icon matChipRemove (click)="removeFilterValue(key, v)">cancel</mat-icon>
+        </mat-chip>
+    </span>
+
+</div>

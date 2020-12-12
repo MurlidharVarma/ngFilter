@@ -1,0 +1,6 @@
+<div class="f-container">
+    <div class="filter-item-container" *ngFor="let key of filterKeys">
+        <app-selected-filter-item [key]="key" [value]="filterObj[key]" (removeFilterItemValue)="removeFilterItemValue($event)"></app-selected-filter-item>
+        <mat-icon (click)="remove(key)" color="primary" class="filter-cancel">cancel</mat-icon>
+    </div>
+</div>

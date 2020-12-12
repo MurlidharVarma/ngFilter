@@ -1,0 +1,11 @@
+.txt{
+    padding: 0px 5px;
+}
+.key{
+    @extend .txt;
+    font-weight: bold;
+}
+
+.value{
+    @extend .txt;
+}

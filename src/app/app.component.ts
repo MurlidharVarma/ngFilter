@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FilterService } from './filter.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngFilter';
+
+  filterMetadata: object = null;
+  criteria: null;
+
+  constructor(private filterService: FilterService){
+    this.filterService.getFilterMetaData().subscribe(data => {
+      this.filterMetadata = data;
+    })
+  }
+
+  filterCriteria(criteria){
+    this.criteria = criteria;
+  }
 }

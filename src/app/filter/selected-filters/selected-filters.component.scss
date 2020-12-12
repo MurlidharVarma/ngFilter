@@ -1,0 +1,30 @@
+.f-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.filter-item-container{
+    border: 1px solid grey;
+    border-radius: 3px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+
+    position: relative;
+}
+
+.filter-cancel{
+    cursor: pointer;
+    position: absolute;
+    top: -7px;
+    right: -17px;
+    font-size: 0.95em;
+}

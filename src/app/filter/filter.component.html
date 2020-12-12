@@ -1,0 +1,34 @@
+<h2>Angular Filter Component</h2>
+
+<div class="filter-container">
+  <mat-form-field class="filter">
+    <mat-label>Filter records</mat-label>
+    <mat-chip-list #filterList aria-label="Selected Filter">
+      <mat-basic-chip class="chip" *ngFor="let filter of filterSelected; let idx=index" [selectable]="selectable"
+               [removable]="removable" (removed)="removeFilter()">
+        {{filter}}{{(idx==0)?": ":""}}
+      </mat-basic-chip>
+      <input [(ngModel)]="textFilter"
+             (keyup)="keyPress($event)"
+             [matChipInputFor]="filterList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             #trigger="matAutocompleteTrigger"  
+             [matAutocomplete]="auto"
+             #inp>
+    </mat-chip-list>
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="optionSelected($event)">
+      <mat-option *ngFor="let filter of filterOptions; let idx = index" >
+        {{filter}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="btn-container">
+    <button *ngIf="isCriteriaExists" mat-raised-button color="accent" (click)="clearAllFilter()" style="display: inline;">
+        <mat-icon>delete</mat-icon>
+        Clear Filter
+    </button>
+  </div>
+  </div>
+
+  <app-selected-filters [filters]="filterCriteria" (removeFilter)="removeFilterCriteria($event)" (removeFilterValue)="removeFilterCriteriaValue($event)"></app-selected-filters>
