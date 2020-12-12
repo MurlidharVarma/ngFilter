@@ -1,27 +1,53 @@
-# NgFilter
+# Angular Filter Componet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.5.
+A component that would allow user to form filter criteria based predefined criteria metadata.
 
-## Development server
+Use tag like below
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+<app-filter 
+    [metadata]="filterMetadata" 
+    (selectedFilters)="filterCriteria($event)">
+</app-filter>
+```
+## Input
+Pass ```metadata``` as Input. The key of metadata forms the Criteria Key and the corresponding value if
+- Null will indicate user input text
+- Array will indicate user need to be presented with predefined options
 
-## Code scaffolding
+```
+{
+  "Name": null,
+  "Country": ["India", "USA"],
+  "City": ["Pune", "Mumbai", "Chennai", "Delhi"],
+  "Status": ["Draft", "In Progress", "Completed","Cancelled"]
+}
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+In above example of metadata ```Name```, ```Country```, ```City``` and  ```Status``` forms the Criteria Key
 
-## Build
+```Name``` having value null will allow user to input free text
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```Country```, ```City``` and  ```Status``` being array, user will be presented with Array values as options. However user can choose to input free text too. The options are searchable.
 
-## Running unit tests
+## Output
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Generate output would look like this for above example based on user selection
+```
+{
+  "Name": "Lee",
+  "Country": "USA",
+  "Status": [
+    "In Progress",
+    "Completed"
+  ],
+  "City": "Mumbai"
+}
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Screenshots
+![Alt text](./screenshots/1.png)
+![Alt text](./screenshots/2.png)
+![Alt text](./screenshots/3.png)
+![Alt text](./screenshots/4.png)
+![Alt text](./screenshots/5.png)
