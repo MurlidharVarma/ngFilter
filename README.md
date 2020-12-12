@@ -1,6 +1,8 @@
-# Angular Filter Componet
+# Angular Filter Component
 
 A component that would allow user to form filter criteria based predefined criteria metadata.
+
+Try demo here: https://murlidharvarma.github.io/ngFilter/
 
 Use tag like below
 
